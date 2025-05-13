@@ -1,0 +1,110 @@
+﻿<div class="register-container">
+    <div class="register-card">
+      <div class="register-header">
+        <h2>Registro</h2>
+      </div>
+  
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="nombreCompleto">Nombre Completo</label>
+          <input type="text" id="nombreCompleto" formControlName="nombreCompleto" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.nombreCompleto.errors }" />
+          <div *ngIf="submitted && f.nombreCompleto.errors" class="invalid-feedback">
+            <div *ngIf="f.nombreCompleto.errors.required">El nombre completo es obligatorio</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="fechaNacimiento">Fecha de Nacimiento</label>
+          <input type="date" id="fechaNacimiento" formControlName="fechaNacimiento" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.fechaNacimiento.errors }" />
+          <div *ngIf="submitted && f.fechaNacimiento.errors" class="invalid-feedback">
+            <div *ngIf="f.fechaNacimiento.errors.required">La fecha de nacimiento es obligatoria</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Correo Electrónico</label>
+          <input type="email" id="email" formControlName="email" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">El correo electrónico es obligatorio</div>
+            <div *ngIf="f.email.errors.email">Debe ingresar un correo válido</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" formControlName="telefono" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" />
+          <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
+            <div *ngIf="f.telefono.errors.required">El teléfono es obligatorio</div>
+            <div *ngIf="f.telefono.errors.pattern">Debe ingresar un número de teléfono válido</div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="form-group col">
+            <label for="contrasenia">Contraseña</label>
+            <input type="password" id="contrasenia" formControlName="contrasenia" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.contrasenia.errors }" />
+            <div *ngIf="submitted && f.contrasenia.errors" class="invalid-feedback">
+              <div *ngIf="f.contrasenia.errors.required">La contraseña es obligatoria</div>
+              <div *ngIf="f.contrasenia.errors.minlength">Debe tener al menos 6 caracteres</div>
+            </div>
+          </div>
+  
+          <div class="form-group col">
+            <label for="confirmPassword">Confirmar Contraseña</label>
+            <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+              <div *ngIf="f.confirmPassword.errors.required">Debe confirmar la contraseña</div>
+              <div *ngIf="f.confirmPassword.errors.mustMatch">Las contraseñas no coinciden</div>
+            </div>
+          </div>
+        </div>
+  
+                <div class="form-group mt-3">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <input
+              type="checkbox"
+              id="acceptTerms"
+              formControlName="acceptTerms"
+              class="form-check-input"
+              style="width: auto; height: auto;"
+              [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }"
+            />
+            <label class="form-check-label mb-0" for="acceptTerms">
+              <a routerLink="/condiciones" class="terms-link">
+                Acepto los términos y condiciones de TANI
+              </a>
+            </label>
+          </div>
+          <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback d-block">
+            <div *ngIf="f.acceptTerms.errors.requiredTrue">Debe aceptar los términos y condiciones</div>
+          </div>
+        </div>
+          
+  
+        <div class="form-group mt-4">
+          <!-- Botón Registrar -->
+          <button [disabled]="submitting" class="submit-btn">
+            <!-- Spinner que se muestra mientras se está procesando -->
+            <span *ngIf="submitting" class="spinner"></span>
+            Registrar
+          </button>
+        </div>
+        
+        <div class="form-group mt-3 text-center">
+          <!-- Texto "¿Ya tienes una cuenta?" -->
+          <p>¿Ya tienes una cuenta?</p>
+        </div>
+        
+        <div class="form-group mt-2 text-center">
+          <!-- Botón estilizado -->
+          <button routerLink="/" class="btn-to-home">Iniciar Sesión</button>
+        </div>
+      </form>
+    </div>
+  </div>

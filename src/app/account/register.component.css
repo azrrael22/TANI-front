@@ -1,0 +1,170 @@
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #1afff8, #0d47a1); /* Gradiente azul */
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(to right, #1afff8, #0d47a1);
+}
+
+.register-card {
+  width: 100%;
+  max-width: 550px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 0 15px #99297733;
+  transition: all 0.3s ease;
+}
+
+.register-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px #99297755;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.register-header h2 {
+  color: #0d47a1;
+  font-weight: 600;
+  margin: 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #0d47a1;
+  box-shadow: 0 0 0 2px #99297733;
+}
+
+.form-group input.is-invalid {
+  border-color: #dc3545;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #0d47a1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-btn:hover {
+  background-color: #0d47a1;
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.toggle-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.toggle-section p {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.toggle-section .toggle-button {
+  background: transparent;
+  border: 2px solid #0d47a1;
+  color: #0d47a1;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-section .toggle-button:hover {
+  background: #99297720;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  height: auto;
+  transform: scale(1); 
+}
+
+.btn-to-home {
+  background-color: white; /* Fondo blanco */
+  border: 2px solid #0d47a1; /* Borde azul */
+  color: #0d47a1; /* Texto azul */
+  padding: 12px; /* Espaciado interno */
+  border-radius: 4px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
+  font-weight: 500; /* Peso de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s, color 0.3s; /* Transición suave */
+  width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+  text-align: center; /* Centra el texto */
+}
+
+.btn-to-home:hover {
+  background-color: #0d47a1; /* Fondo azul al pasar el mouse */
+  color: white; /* Texto blanco al pasar el mouse */
+}
+
+.terms-link {
+  color: black; /* Color inicial */
+  text-decoration: underline; /* Subrayado en negro */
+  font-weight: normal; /* Asegura que no esté en negritas */
+  transition: color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.terms-link:hover {
+  color: #0d47a1; /* Cambia a azul al pasar el cursor */
+  text-decoration: underline; /* Mantiene el subrayado */
+}

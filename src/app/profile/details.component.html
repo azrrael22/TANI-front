@@ -1,0 +1,103 @@
+﻿<div class="profile-container">
+    <div class="profile-header">
+      <h1>Mi Perfil</h1>
+      <p>Administra tu información personal</p>
+    </div>
+  
+    <div class="profile-content" *ngIf="account">
+      <div class="profile-info">
+        <div class="profile-avatar">
+          <!-- Avatar placeholder con las iniciales del nombre -->
+          <div class="avatar-circle">
+            <span class="avatar-initials">{{ account.nombre?.charAt(0) || 'U' }}</span>
+          </div>
+        </div>
+  
+        <div class="profile-details">
+          <h2>{{ account.nombre }}</h2>
+          <p class="user-type">{{ account.tipoUsuario === 'ADMINISTRADOR' ? 'Administrador' : 'Usuario' }}</p>
+        </div>
+      </div>
+  
+      <div class="alert alert-success" *ngIf="success">
+        ¡Perfil actualizado correctamente!
+      </div>
+  
+      <div class="alert alert-danger" *ngIf="error">
+        {{ error }}
+      </div>
+  
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="profile-form">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input
+            id="nombre"
+            type="text"
+            formControlName="nombre"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['nombre'].errors }"
+          />
+          <div *ngIf="submitted && f['nombre'].errors" class="invalid-feedback">
+            <div *ngIf="f['nombre'].errors?.['required']">El nombre es requerido</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="fechaNacimiento">Fecha de nacimiento</label>
+          <input
+            id="fechaNacimiento"
+            type="date"
+            formControlName="fechaNacimiento"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['fechaNacimiento'].errors }"
+          />
+          <div *ngIf="submitted && f['fechaNacimiento'].errors" class="invalid-feedback">
+            <div *ngIf="f['fechaNacimiento'].errors?.['required']">La fecha de nacimiento es requerida</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input
+            id="telefono"
+            type="tel"
+            formControlName="telefono"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['telefono'].errors }"
+          />
+          <div *ngIf="submitted && f['telefono'].errors" class="invalid-feedback">
+            <div *ngIf="f['telefono'].errors?.['required']">El teléfono es requerido</div>
+            <div *ngIf="f['telefono'].errors?.['pattern']">Ingrese un número de teléfono válido (10 dígitos)</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="correo">Correo electrónico</label>
+          <input
+            id="correo"
+            type="email"
+            formControlName="correo"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['correo'].errors }"
+          />
+          <div *ngIf="submitted && f['correo'].errors" class="invalid-feedback">
+            <div *ngIf="f['correo'].errors?.['required']">El correo electrónico es requerido</div>
+            <div *ngIf="f['correo'].errors?.['email']">Ingrese un correo electrónico válido</div>
+          </div>
+        </div>
+  
+        <div class="form-actions">
+          <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Guardar cambios
+          </button>
+        </div>
+      </form>
+    </div>
+  
+    <div class="profile-not-found" *ngIf="!account">
+      <p>No se encontró información del usuario. Por favor, inicie sesión nuevamente.</p>
+      <button class="btn btn-link" routerLink="/account/login">Ir a iniciar sesión</button>
+    </div>
+  </div>
+  

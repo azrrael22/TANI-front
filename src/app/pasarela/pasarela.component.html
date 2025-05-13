@@ -1,0 +1,71 @@
+<div class="container pasarela-container">
+  <form (submit)="procesarPago(); logAccountId()">
+    <div class="row">
+      <!-- Columna: Detalles del Pedido -->
+      <div class="column">
+        <h3 class="title">Detalles Pedido</h3>
+                <div class="input-box">
+          <span>Nombre Completo :</span>
+          <input type="text" [(ngModel)]="nombreCompleto" name="nombreCompleto" readonly>
+        </div>
+        <div class="input-box">
+          <span>Email :</span>
+          <input type="email" [(ngModel)]="email" name="email" readonly>
+        </div>
+        <div class="input-box">
+          <span>Dirección de Residencia :</span>
+          <input type="text" placeholder="Calle - Número - Barrio" required>
+        </div>
+        <div class="input-box">
+          <span>Ciudad :</span>
+          <input type="text" placeholder="Bogotá" required>
+        </div>
+
+        <div class="flex">
+          <div class="input-box">
+            <span>Total del Carrito :</span>
+            <input type="text" [value]="total | currency:'COP':'symbol'" readonly>
+          </div>
+          <div class="input-box">
+            <span>Código Postal :</span>
+            <input type="number" placeholder="110111" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna: Pago -->
+      <div class="column">
+        <h3 class="title">Pago</h3>
+        <div class="input-box">
+          <span>Tarjetas Aceptadas :</span>
+          <img src="assets/images/imgcards.png" alt="Tarjetas Aceptadas" style="max-width: 180px; height: auto;">
+        </div>
+        <div class="input-box">
+          <span>Nombre en la Tarjeta :</span>
+          <input type="text" placeholder="Sr. Jacob Aiden" required>
+        </div>
+        <div class="input-box">
+          <span>Número de Tarjeta :</span>
+          <input type="number" placeholder="1111 2222 3333 4444" required>
+        </div>
+        <div class="input-box">
+          <span>Mes de Expiración :</span>
+          <input type="text" placeholder="Agosto" required>
+        </div>
+
+        <div class="flex">
+          <div class="input-box">
+            <span>Año de Expiración :</span>
+            <input type="number" placeholder="2025" required>
+          </div>
+          <div class="input-box">
+            <span>CVV :</span>
+            <input type="number" placeholder="123" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-pagar">Pagar Pedido</button>
+  </form>
+</div>

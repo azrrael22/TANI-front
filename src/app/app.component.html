@@ -1,0 +1,28 @@
+﻿<div class="app-container">
+    <!-- main nav -->
+    <nav class="navbar navbar-expand navbar-dark bg-dark px-3" *ngIf="account">
+        <div class="navbar-nav mx-auto">
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item nav-link me-3">
+                <i class="fa fa-home"></i> Catálogo
+            </a>
+            <a routerLink="/mi-carrito" routerLinkActive="active" class="nav-item nav-link me-3">
+                <i class="fa fa-shopping-cart"></i> Carrito
+            </a>
+            <a routerLink="/profile" routerLinkActive="active" class="nav-item nav-link me-3">
+                <i class="fa fa-user-circle"></i> Mi cuenta
+            </a>
+            <button (click)="logout()" class="btn btn-link nav-item nav-link">
+                <i class="fa fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
+
+    <!-- subnav router outlet -->
+    <router-outlet name="subnav"></router-outlet>
+
+    <!-- global alert -->
+    <alert></alert>
+
+    <!-- main router outlet -->
+    <router-outlet></router-outlet>
+</div>

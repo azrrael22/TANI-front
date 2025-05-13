@@ -1,0 +1,78 @@
+<div *ngIf="product">
+  <h3 class="card-header">Editar Producto</h3>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
+        <div *ngIf="submitted && f.nombre?.errors" class="invalid-feedback">
+          <div *ngIf="f.nombre.errors?.required">El nombre es obligatorio</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Descripción</label>
+        <textarea formControlName="descripcion" class="form-control" rows="4" [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }"></textarea>
+        <div *ngIf="submitted && f.descripcion?.errors" class="invalid-feedback">
+          <div *ngIf="f.descripcion.errors?.required">La descripción es obligatoria</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Tipo de Calzado</label>
+        <input type="text" formControlName="tipoCalzado" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tipoCalzado.errors }" />
+        <div *ngIf="submitted && f.tipoCalzado?.errors" class="invalid-feedback">
+          <div *ngIf="f.tipoCalzado.errors?.required">El tipo de calzado es obligatorio</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="imagen" class="form-label">Imagen</label>
+        <input type="file" class="form-control" id="imagen" (change)="onFileSelected($event)" accept="image/*" />
+        <div *ngIf="previewUrl" class="mt-3">
+          <p>Previsualización:</p>
+          <img [src]="previewUrl" class="img-thumbnail" style="max-width: 200px;" />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Precio</label>
+        <input type="number" formControlName="precio" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.precio.errors }" />
+        <div *ngIf="submitted && f.precio?.errors" class="invalid-feedback">
+          <div *ngIf="f.precio.errors?.required">El precio es obligatorio</div>
+          <div *ngIf="f.precio.errors?.min">El precio debe ser mayor o igual a 0</div>
+        </div>
+      </div>
+
+      <h4>Tallas</h4>
+      <div formArrayName="tallas">
+        <div *ngFor="let talla of tallas.controls; let i = index" [formGroupName]="i" class="mb-3">
+          <label class="form-label">Talla</label>
+          <input type="text" formControlName="talla" class="form-control" [ngClass]="{ 'is-invalid': submitted && talla.get('talla')?.errors }" />
+          <div *ngIf="submitted && talla.get('talla')?.errors" class="invalid-feedback">
+            <div *ngIf="talla.get('talla')?.errors?.required">La talla es obligatoria</div>
+          </div>
+
+          <label class="form-label">Cantidad</label>
+          <input type="number" formControlName="cantidad" class="form-control" [ngClass]="{ 'is-invalid': submitted && talla.get('cantidad')?.errors }" />
+          <div *ngIf="submitted && talla.get('cantidad')?.errors" class="invalid-feedback">
+            <div *ngIf="talla.get('cantidad')?.errors?.required">La cantidad es obligatoria</div>
+            <div *ngIf="talla.get('cantidad')?.errors?.min">La cantidad debe ser mayor o igual a 0</div>
+          </div>
+
+          <button type="button" class="btn btn-danger mt-2" (click)="removeTalla(i)">Eliminar Talla</button>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-secondary" (click)="addTalla()">Agregar Talla</button>
+
+      <div class="mb-3 mt-3">
+        <button [disabled]="submitting" class="btn btn-primary">
+          <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+          Guardar Cambios
+        </button>
+        <a routerLink="/" class="btn btn-link">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</div>

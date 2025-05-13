@@ -1,0 +1,73 @@
+<!-- Bootstrap y jQuery -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<!-- Tu CSS personalizado -->
+<link rel="stylesheet" href="carrito.component.css">
+
+<div class="container carrito-container">
+  <div *ngIf="(pedido?.detalles?.length ?? 0) > 0; else emptyCart">
+    <div class="row carrito-titulo text-center">
+      <div class="col-sm-4">Producto</div>
+      <div class="col-sm-2">Cantidad</div>
+      <div class="col-sm-2">Precio Unitario</div>
+      <div class="col-sm-2">Subtotal</div>
+      <div class="col-sm-2">Acciones</div>
+    </div>
+
+    <div *ngFor="let detalle of pedido.detalles" class="row item-carrito text-center">
+      <div class="col-sm-4 producto-columna">
+        <img [src]="detalle.productoDTO.imagen" alt="Imagen del producto">
+        <div class="producto-detalles">
+          <strong>{{ detalle.productoDTO.nombre }}</strong>
+          <span>Tipo: {{ detalle.productoDTO.tipoCalzado }}</span>
+          <span>Talla: {{ detalle.tallaDTO.talla }}</span>
+        </div>
+      </div>
+
+            <div class="col-sm-2">
+        <div class="btn-group">
+          <button class="btn btn-cantidad" (click)="actualizarCantidad(detalle, -1)">-</button>
+          <span class="btn btn-cantidad disabled">{{ detalle.cantidad }}</span>
+          <button class="btn btn-cantidad" (click)="actualizarCantidad(detalle, 1)">+</button>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <strong>${{ detalle.precioUnitario }}</strong>
+      </div>
+
+      <div class="col-sm-2">
+        <strong>${{ detalle.subtotal }}</strong>
+      </div>
+
+            <div class="col-sm-2">
+        <button type="button" class="btn btn-danger btn-xs btn-eliminar" (click)="eliminarDetalle(detalle)">
+          <span class="glyphicon glyphicon-remove"></span> Eliminar
+        </button>
+      </div>
+
+      <div class="col-sm-12 linea-separador"></div>
+    </div>
+
+    <div class="row text-right" style="margin-top: 15px;">
+      <div class="col-sm-6 col-sm-offset-6">
+        <h4>Total: <strong>${{ total }}</strong></h4>
+      </div>
+    </div>
+
+                <div class="row botones-acciones">
+          <button type="button" class="btn btn-default" routerLink="/">
+            <span class="glyphicon glyphicon-shopping-cart"></span> Seguir Comprando
+          </button>
+          <button type="button" class="btn btn-success" routerLink="/pasarela">
+            Pagar <span class="glyphicon glyphicon-play"></span>
+          </button>
+        </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <p class="text-center">Tu carrito está vacío.</p>
+  </ng-template>
+</div>

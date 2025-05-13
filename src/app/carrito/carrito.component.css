@@ -1,0 +1,88 @@
+.carrito-titulo {
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.item-carrito {
+  padding: 20px 0;
+}
+
+.item-carrito img {
+  width: 206px;
+  height: 125px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.linea-separador {
+  border-top: 1px solid #eaeaea;
+  margin: 15px 0;
+}
+
+.producto-columna {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.producto-detalles {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 16px;
+}
+
+.btn-eliminar {
+  font-size: 14px; /* Aumentar el tamaño del texto */
+  padding: 10px 20px; /* Agregar espacio interno */
+  margin: 0 auto; /* Centrar el botón horizontalmente */
+  display: block; /* Asegurar que el botón ocupe todo el ancho del contenedor */
+  text-align: center; /* Centrar el texto dentro del botón */
+}
+
+.col-sm-2 {
+  display: flex; /* Hacer que el contenedor sea un contenedor flexible */
+  justify-content: center; /* Centrar el botón horizontalmente */
+  align-items: center; /* Centrar el botón verticalmente */
+  font-size: 16px;
+}
+
+.botones-acciones {
+  display: flex; /* Alinear los botones en una fila */
+  justify-content: flex-end; /* Alinear los botones hacia la derecha */
+  gap: 15px; /* Espacio entre los botones */
+  margin-top: 15px; /* Espacio superior */
+  margin-bottom: 30px; /* Espacio en blanco debajo de los botones */
+}
+
+.botones-acciones button {
+  width: auto; /* Ajustar el ancho automáticamente al contenido */
+  min-width: 120px; /* Ancho mínimo para los botones */
+  padding: 10px 15px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+}
+
+.btn-cantidad {
+  background-color: #f8f9fa; /* Fondo claro */
+  border: 1px solid #ced4da; /* Borde gris claro */
+  color: #495057; /* Color del texto */
+  font-size: 16px; /* Tamaño del texto */
+  padding: 5px 10px; /* Espaciado interno */
+  border-radius: 4px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+.btn-cantidad:hover {
+  background-color: #e2e6ea; /* Fondo más oscuro al pasar el mouse */
+  color: #212529; /* Texto más oscuro al pasar el mouse */
+}
+
+.btn-cantidad.disabled {
+  background-color: #f8f9fa; /* Fondo claro para el botón deshabilitado */
+  color: #6c757d; /* Color gris más oscuro para el texto */
+  cursor: not-allowed; /* Cursor no permitido */
+  opacity: 1; /* Asegurar que no sea transparente */
+}
